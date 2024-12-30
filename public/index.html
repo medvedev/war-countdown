@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crossfade Divs</title>
+    <style>
+        body {
+            background-color: black;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .container {
+            left: 0;
+            width: 100%;
+            height: 0;
+            position: relative;
+            padding-bottom: 60%;
+            margin: 0 auto;
+        }
+
+        .fade-div {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .fade-div.active {
+            opacity: 1;
+        }
+
+        .iframe-inner {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .div-inner {
+            height: 42%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="fade-div active">
+            <div class="div-inner" style="margin-bottom: 50px;">
+                <iframe class="iframe-inner" src="https://www.tickcounter.com/widget/countup/395768"
+                    title="З початку вторгнення"></iframe>
+            </div>
+            <div class="div-inner">
+                <iframe class="iframe-inner" src="https://www.tickcounter.com/widget/countup/395769"
+                    title="З початку війни"></iframe>
+            </div>
+        </div>
+
+
+        <div class="fade-div">
+            <div class="div-inner" style="margin-bottom: 50px;">
+            <iframe src="https://www.tickcounter.com/widget/countup/395766" class="iframe-inner"
+                title="Desde o início da invasão"></iframe>
+            </div>
+            <div class="div-inner">
+            <iframe src="https://www.tickcounter.com/widget/countup/395771" class="iframe-inner"
+                title="Desde o início da guerra"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const interval = 10000;
+        const divs = document.querySelectorAll('.fade-div');
+        const frameReloadDelay = 2500;
+        let currentIndex = 0;
+        let callCount = 0;
+
+        setInterval(() => {
+            const hiddenDiv = divs[currentIndex];
+            hiddenDiv.classList.remove('active');
+            currentIndex = (currentIndex + 1) % divs.length;
+            divs[currentIndex].classList.add('active');
+
+            if (++callCount % 6 === 0) {
+                setTimeout(() => {
+                    const iframes = hiddenDiv.querySelectorAll('iframe');
+                    iframes.forEach(iframe => {
+                        iframe.src = iframe.src;
+                    });
+                }, frameReloadDelay);
+            }
+        }, interval);
+    </script>
+
+</body>
+
+</html>
