@@ -98,6 +98,22 @@
             }
         }, interval);
     </script>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+        const firebaseConfig = {
+          apiKey: "AIzaSyCiWWMr9KqHwhi6c9r342-HaMVBNSG3Vgo",
+          authDomain: "desde-inicio.firebaseapp.com",
+          projectId: "desde-inicio",
+          storageBucket: "desde-inicio.firebasestorage.app",
+          messagingSenderId: "112610547450",
+          appId: "1:112610547450:web:c4cd7be64153c433fc5b43",
+          measurementId: "G-LXXE4FXE5N"
+        };
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
 
 </body>
 

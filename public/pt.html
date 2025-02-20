@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desde o início da guerra</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        
+        body {
+            background-color: black;
+            overflow: hidden;
+        }
+        
+        .container {
+            margin: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* 20px space between child divs */
+            width: calc(100% - 10px);
+            height: calc(100vh - 10px);
+        }
+        
+        .div-inner {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .iframe-inner {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="div-inner">
+            <iframe src="https://www.tickcounter.com/widget/countup/395766" class="iframe-inner"
+                title="Desde o início da invasão"></iframe>
+        </div>
+        <div class="div-inner">
+            <iframe src="https://www.tickcounter.com/widget/countup/395771" class="iframe-inner"
+                title="Desde o início da guerra"></iframe>
+        </div>
+    </div>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
+        const firebaseConfig = {
+          apiKey: "AIzaSyCiWWMr9KqHwhi6c9r342-HaMVBNSG3Vgo",
+          authDomain: "desde-inicio.firebaseapp.com",
+          projectId: "desde-inicio",
+          storageBucket: "desde-inicio.firebasestorage.app",
+          messagingSenderId: "112610547450",
+          appId: "1:112610547450:web:c4cd7be64153c433fc5b43",
+          measurementId: "G-LXXE4FXE5N"
+        };
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+    </script>
+
+</body>
+
+</html>
